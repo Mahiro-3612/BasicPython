@@ -1,25 +1,34 @@
-def prime_number_checker(input):
+def prime_number_checker(n):
 
-    if input == 1:
-        return "素数ではありません"
+    try:
+        if not isinstance(n, int) or n < 1:
+            raise ValueError("自然数ではありません")
 
-    elif input == 2:
-        return "素数です"
+        elif n == 1:
+            return False
 
-    else:
-        possible_factor = 2
+        elif n == 2:
+            return True
 
-        while possible_factor < input // 2 + 1:
-            if input % possible_factor == 0:
-                return "素数ではありません"
-                break
-            else:
-                possible_factor += 1
+        else:
+            result_flag = True
+            possible_factor = 2
 
-    return "素数です"
+            while possible_factor < n // 2 + 1:
+                if n % possible_factor == 0:
+                    result_flag = False
+                    break
+                else:
+                    possible_factor += 1
+
+            return result_flag
+    except ValueError as e:
+        return None, f"エラー: {e}"
 
 
 # (1)
 print(f"61は{prime_number_checker(61)}")
 # (2)
 print(f"10は{prime_number_checker(10)}")
+# エクストラ
+print(f"1.1は{prime_number_checker(1.1)}")
