@@ -1,6 +1,9 @@
 def prime_number_checker(input):
 
-    if input == 2:
+    if input == 1:
+        return "素数ではありません"
+
+    elif input == 2:
         return "素数です"
 
     else:
